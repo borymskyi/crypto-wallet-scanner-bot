@@ -1,21 +1,25 @@
 package com.borymskyi.controllers;
 
-import jakarta.annotation.PostConstruct;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import javax.annotation.PostConstruct;
+
 @Log4j
 @Component
 public class FirstScannerBot extends TelegramLongPollingBot {
 
-    private static final String BOT_TOKEN = "x";
-    private static final String BOT_NAME ="x";
-    private UpdateController updateController;
+    @Value("${bot.name}")
+    private String botName;
+    @Value("${bot.token}")
+    private String botToken;
+    private final UpdateController updateController;
 
     @Autowired
     public FirstScannerBot(UpdateController updateController) {
@@ -24,12 +28,12 @@ public class FirstScannerBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return BOT_NAME;
+        return botName;
     }
 
     @Override
     public String getBotToken() {
-        return BOT_TOKEN;
+        return botToken;
     }
 
     @PostConstruct

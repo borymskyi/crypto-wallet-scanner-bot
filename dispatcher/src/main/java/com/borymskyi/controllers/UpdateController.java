@@ -31,7 +31,7 @@ public class UpdateController {
 
     public void processUpdate(Update update) {
         if (update == null) {
-            log.error("1. Received update is null");
+            log.error("Received update is null");
             return;
         }
 
@@ -43,15 +43,13 @@ public class UpdateController {
     }
 
     private void distributeMessagesByType(Update update) {
-        var receivedMessage = update.getMessage();
-
-        if (receivedMessage.getText() != null) {
+        if (update.getMessage().getText() != null) {
             processTextMessage(update);
 
-        } else if (receivedMessage.getDocument() != null) {
+        } else if (update.getMessage().getDocument() != null) {
             processDocMessage(update);
 
-        } else if (receivedMessage.getPhoto() != null) {
+        } else if (update.getMessage().getPhoto() != null) {
             processPhotoMessage(update);
 
         } else {

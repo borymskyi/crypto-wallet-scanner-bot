@@ -15,15 +15,13 @@ public class ScannerbotoneApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ScannerbotoneApplication.class, args);
-
-		try {
-			TelegramBotsApi botAPI = new TelegramBotsApi(DefaultBotSession.class);
-
-			botAPI.registerBot(new FirstScannerBot(new UpdateController(new MessageUtils(), new UpdateProducerImpl())));
-
-		} catch (TelegramApiException e) {
-			e.printStackTrace();
-		}
-
+//		try {
+//			TelegramBotsApi botAPI = new TelegramBotsApi(DefaultBotSession.class);
+//
+//			botAPI.registerBot(new FirstScannerBot(new UpdateController(new MessageUtils(), new UpdateProducerImpl())));
+//
+//		} catch (TelegramApiException e) {
+//			e.printStackTrace();
+//		}
 	}
 }
