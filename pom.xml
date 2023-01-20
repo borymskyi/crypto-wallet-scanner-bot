@@ -15,7 +15,8 @@
         <module>common-rabbitmq</module>
 		<module>dispatcher</module>
 		<module>node</module>
-	</modules>
+        <module>common-jpa</module>
+    </modules>
 
     <properties>
 		<java.version>17</java.version>
