@@ -35,7 +35,7 @@ public class UpdateController {
             return;
         }
 
-        if (update.getMessage() != null) {
+        if (update.hasMessage()) {
             distributeMessagesByType(update);
         } else {
             log.error("Unsupported message type is received: " + update);
@@ -43,13 +43,13 @@ public class UpdateController {
     }
 
     private void distributeMessagesByType(Update update) {
-        if (update.getMessage().getText() != null) {
+        if (update.getMessage().hasText()) {
             processTextMessage(update);
 
-        } else if (update.getMessage().getDocument() != null) {
+        } else if (update.getMessage().hasDocument()) {
             processDocMessage(update);
 
-        } else if (update.getMessage().getPhoto() != null) {
+        } else if (update.getMessage().hasPhoto()) {
             processPhotoMessage(update);
 
         } else {
